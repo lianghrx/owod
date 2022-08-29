@@ -1,0 +1,17 @@
+_BASE_: "../../Base-RCNN-C4-OWOD-TOOLKIT.yaml"
+MODEL:
+  WEIGHTS: "../../../output/t2/model_final.pth"
+DATASETS:
+  TRAIN: ('t2_toolkit_ft',)
+  TEST: ('all_task_toolkit_test',)
+SOLVER:
+  STEPS: (24000, 30000)
+  MAX_ITER: 36000
+  WARMUP_ITERS: 0
+OUTPUT_DIR: "../../../output/t2_ft"
+OWOD:
+  PREV_INTRODUCED_CLS: 32
+  CUR_INTRODUCED_CLS: 5
+  ENABLE_CLUSTERING: False
+  CLUSTERING:
+    START_ITER: 18000

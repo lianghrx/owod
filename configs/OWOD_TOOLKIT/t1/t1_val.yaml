@@ -1,0 +1,19 @@
+_BASE_: "../../Base-RCNN-C4-OWOD-TOOLKIT.yaml"
+MODEL:
+  WEIGHTS: "../../../output/t1/model_final.pth"
+DATASETS:
+  TRAIN: ('all_task_toolkit_val',)
+  TEST: ('all_task_toolkit_val',)
+SOLVER:
+  STEPS: (12000, 16000)
+  MAX_ITER: 500
+  WARMUP_ITERS: 0
+OUTPUT_DIR: "../../../output/t1_final"
+OWOD:
+  PREV_INTRODUCED_CLS: 0
+  CUR_INTRODUCED_CLS: 32
+  COMPUTE_ENERGY: True
+  ENERGY_SAVE_PATH: 'energy'
+  SKIP_TRAINING_WHILE_EVAL: False
+  ENABLE_CLUSTERING: False
+  TEMPERATURE: 1.5

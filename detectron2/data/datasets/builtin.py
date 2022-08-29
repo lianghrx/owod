@@ -27,6 +27,7 @@ from .cityscapes_panoptic import register_all_cityscapes_panoptic
 from .coco import load_sem_seg
 from .lvis import get_lvis_instances_meta, register_lvis_instances
 from .pascal_voc import register_pascal_voc
+from .pascal_voc_custom import register_pascal_voc_custom
 from .voc_style_coco import register_voc_style_coco
 from .register_coco import register_coco_instances, register_coco_panoptic_separated
 
@@ -78,7 +79,6 @@ _PREDEFINED_SPLITS_COCO["coco_person"] = {
     ),
 }
 
-
 _PREDEFINED_SPLITS_COCO_PANOPTIC = {
     "coco_2017_train_panoptic": (
         # This is the original panoptic annotation directory
@@ -116,8 +116,8 @@ def register_all_coco(root):
             )
 
     for (
-        prefix,
-        (panoptic_root, panoptic_json, semantic_root),
+            prefix,
+            (panoptic_root, panoptic_json, semantic_root),
     ) in _PREDEFINED_SPLITS_COCO_PANOPTIC.items():
         prefix_instances = prefix[: -len("_panoptic")]
         instances_meta = MetadataCatalog.get(prefix_instances)
@@ -236,6 +236,24 @@ def register_all_pascal_voc(root):
         MetadataCatalog.get(name).evaluator_type = "pascal_voc"
 
 
+def register_all_pascal_voc_custom(root):
+    # LOAD CUSTOM VOC DATASETS
+    SPLITS = [
+        ("all_task_toolkit_train", "VOC2007", "all_task_train"),
+        ("all_task_toolkit_test", "VOC2007", "all_task_test"),
+        ("all_task_toolkit_val", "VOC2007", "all_task_val"),
+        ("t1_toolkit_train", "VOC2007", "t1_train"),
+        ("t2_toolkit_train", "VOC2007", "t2_train"),
+        ("t2_toolkit_ft", "VOC2007", "t2_ft"),
+        ("t3_toolkit_train", "VOC2007", "t3_train"),
+        ("t3_toolkit_ft", "VOC2007", "t3_ft"),
+    ]
+    for name, dirname, split in SPLITS:
+        year = 2007 if "2007" in name else 2012
+        register_pascal_voc_custom(name, os.path.join(root, dirname), split, year)
+        MetadataCatalog.get(name).evaluator_type = "pascal_voc"
+
+
 # def register_all_voc_style_coco(root):
 #     SPLITS = [
 #         ("t2_train", "coco17_voc_style"),
@@ -282,6 +300,7 @@ if __name__.endswith(".builtin"):
     register_all_cityscapes(_root)
     register_all_cityscapes_panoptic(_root)
     register_all_pascal_voc(_root)
+    register_all_pascal_voc_custom(os.path.join(_root, 'toolkit'))
     # register_all_pascal_voc('/home/joseph/workspace/OWOD/datasets')
     # register_all_pascal_voc('/home/joseph/workspace/OWOD/datasets')
     # register_all_voc_style_coco('/home/fk1/workspace/OWOD/datasets')
