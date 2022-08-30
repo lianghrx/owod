@@ -300,7 +300,7 @@ if __name__.endswith(".builtin"):
     register_all_cityscapes(_root)
     register_all_cityscapes_panoptic(_root)
     register_all_pascal_voc(_root)
-    register_all_pascal_voc_custom(os.path.join(_root, 'toolkit'))
+    register_all_pascal_voc_custom(_root)
     # register_all_pascal_voc('/home/joseph/workspace/OWOD/datasets')
     # register_all_pascal_voc('/home/joseph/workspace/OWOD/datasets')
     # register_all_voc_style_coco('/home/fk1/workspace/OWOD/datasets')

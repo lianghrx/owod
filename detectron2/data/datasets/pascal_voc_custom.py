@@ -14,15 +14,15 @@ from detectron2.structures import BoxMode
 
 __all__ = ["load_voc_custom_instances", "register_pascal_voc_custom"]
 
-T1_CLASS_NAMES = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '16', '18', '20',
-                  '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34']
-T2_CLASS_NAMES = ['35', '36', '37', '38', '39']
-T3_CLASS_NAMES = ['40', '41', '42', '43', '44']
-OTHER_CLASS_NAMES = ['15', '17']
+T1_CLASS_NAMES = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17',
+                  '18', '19', '20']
+T2_CLASS_NAMES = ['21', '22', '23', '24', '25']
+T3_CLASS_NAMES = ['26', '27', '28', '29', '30']
+OT_CLASS_NAMES = ['31', '32', '33', '34']
 
 UNK_CLASS = ["unknown"]
 
-CUSTOM_CLASS_NAMES = tuple(itertools.chain(T1_CLASS_NAMES, T2_CLASS_NAMES, T3_CLASS_NAMES, OTHER_CLASS_NAMES, UNK_CLASS))
+CUSTOM_CLASS_NAMES = tuple(itertools.chain(T1_CLASS_NAMES, T2_CLASS_NAMES, T3_CLASS_NAMES, OT_CLASS_NAMES, UNK_CLASS))
 
 
 def load_voc_custom_instances(dirname: str, split: str, class_names: Union[List[str], Tuple[str, ...]]):
