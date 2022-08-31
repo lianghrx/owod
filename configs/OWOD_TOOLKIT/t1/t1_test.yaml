@@ -1,6 +1,6 @@
 _BASE_: "../../Base-RCNN-C4-OWOD-TOOLKIT.yaml"
 MODEL:
-  WEIGHTS: "../../../output/t1/model_final.pth"
+  WEIGHTS: "./output/t1/model_final.pth"
   ROI_HEADS:
     NMS_THRESH_TEST: 0.4
 TEST:
@@ -12,7 +12,7 @@ SOLVER:
   STEPS: (12000, 16000)
   MAX_ITER: 18000
   WARMUP_ITERS: 100
-OUTPUT_DIR: "../../../output/t1_test"
+OUTPUT_DIR: "./output/t1_final"
 OWOD:
   PREV_INTRODUCED_CLS: 0
   CUR_INTRODUCED_CLS: 21

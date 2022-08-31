@@ -4,7 +4,7 @@ MODEL:
     PRE_NMS_TOPK_TEST: 6000
     POST_NMS_TOPK_TEST: 1000
   ROI_HEADS:
-    #    NUM_CLASSES: 81 # 0-79 Known class; 80 -> Unknown; 81 -> Background.
+    #    NUM_CLASSES: 35 # 0-34 Known class; 35 -> Unknown; 36 -> Background.
     NUM_CLASSES: 36
     NAME: "Res5ROIHeads"
   WEIGHTS: "detectron2://ImageNetPretrained/MSRA/R-50.pkl"

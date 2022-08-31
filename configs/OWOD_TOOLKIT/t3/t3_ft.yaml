@@ -1,6 +1,6 @@
 _BASE_: "../../Base-RCNN-C4-OWOD-TOOLKIT.yaml"
 MODEL:
-  WEIGHTS: "../../../output/t3/model_final.pth"
+  WEIGHTS: "./output/t3/model_final.pth"
 DATASETS:
   TRAIN: ('t3_toolkit_ft',)
   TEST: ('all_task_toolkit_test',)
@@ -8,7 +8,7 @@ SOLVER:
   STEPS: (46000, 52000)
   MAX_ITER: 62000
   WARMUP_ITERS: 0
-OUTPUT_DIR: "../../../output/t3_ft"
+OUTPUT_DIR: "./output/t3_ft"
 OWOD:
   PREV_INTRODUCED_CLS: 26
   CUR_INTRODUCED_CLS: 5
