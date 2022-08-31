@@ -2,3 +2,6 @@ __pycache__
 .idea
 build
 output
+detectron2.egg-info
+detectron2/model_zoo
+detectron2/_C*
