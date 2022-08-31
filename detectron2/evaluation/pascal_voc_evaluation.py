@@ -84,7 +84,11 @@ class PascalVOCDetectionEvaluator(DatasetEvaluator):
         end_x = x + eps_radius
         step = (end_x - start_x) / num_eval_points
         dx = torch.linspace(x - eps_radius, x + eps_radius, num_eval_points)
-        pdf = distribution.log_prob(dx).exp()
+        # pdf = distribution.log_prob(dx).exp()
+        try:
+            pdf = distribution.log_prob(dx).exp()
+        except ValueError:
+            pdf = float('nan')
         prob = torch.sum(pdf * step)
         return prob
 
